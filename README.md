@@ -14,11 +14,12 @@ Use Python3 build RESTful API to call
 ### run server
 
 ```bash
-python manage.py runserver
+~ cd night914
+~ python manage.py runserver
 ```
 
 ### Users API
 
 ```bash
-curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/users/
+~ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/users/
 ```
