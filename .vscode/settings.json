@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "env/bin/python",
+    "python.pythonPath": "/Users/night/djangoapi/env/bin/python3",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }
