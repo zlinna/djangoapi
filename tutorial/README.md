@@ -1,47 +1,43 @@
 # 1-serialization
 
+## Preposition
+
 ```bash
 ~ pwd
 ~ xxx\tutorial
 ~ python manage.py runserver
+```
 
-# test demo
+## test demo
+
+control the format of the response by using [Accept] header.
+
+### JSON suffix
+
+```bash
+~ http http://127.0.0.1:8000/snippets/2/ Accept:application/json
+~ http http://127.0.0.1:8000/snippets/2.json
 ~ http http://127.0.0.1:8000/snippets/2/
-HTTP/1.1 200 OK
-Content-Length: 120
-Content-Type: application/json
-Date: Tue, 14 Jan 2020 12:39:26 GMT
-Server: WSGIServer/0.2 CPython/3.7.2
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
+```
 
-{
-    "code": "print(\"hello, world\")\n",
-    "id": 2,
-    "language": "python",
-    "linenos": false,
-    "style": "friendly",
-    "title": ""
-}
+### Browsable API suffix
 
-~ http http://127.0.0.1:8000/snippets
-HTTP/1.1 200 OK
-Content-Length: 588
-Content-Type: application/json
-Date: Tue, 14 Jan 2020 12:39:47 GMT
-Server: WSGIServer/0.2 CPython/3.7.2
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
+```bash
+~ http http://127.0.0.1:8000/snippets/ Accept:text/html
+~ http http://127.0.0.1:8000/snippets/2.api
+```
 
-[
-    {
-        "code": "foo = \"bar\"\n",
-        "id": 1,
-        "language": "python",
-        "linenos": false,
-        "style": "friendly",
-        "title": ""
-    },
-    ...
-]
+control the format of the request by using [Content-Type] header.
+
+### POST using form data
+
+```bash
+~ http --form POST http://127.0.0.1:8000/snippets/ code="print(123)"
+```
+
+### POST using JSON
+
+```bash
+~ http --debug --json POST http://127.0.0.1:8000/snippets/ code="print(456)"
+--debug can see the request type in request headers.
 ```
